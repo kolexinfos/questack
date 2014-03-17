@@ -21,6 +21,10 @@ Route::post('/auth/login', 'AuthController@login');
 Route::get('/auth/logout', 'AuthController@logout');
 Route::post('/auth/signup', 'AuthController@signup');
 
+//module routes
+Route::get('/modules/get','ModuleController@getModules');
+Route::get('/modules/getById','ModuleController@getModuleById');
+
 Route::get('/exams', function()
 {
     $exams = DB::table('exams')

@@ -3,9 +3,9 @@
     <p>Browse Apps</p>
   </div>
   <div class="m-container">
-    <div id="ms" class="module" ng-repeat="(k,v) in modules">
+    <div id="ms" ng-click="startModule(v.module_uri)" class="module" ng-repeat="(k,v) in modules">
         <div class="m-content">
-          <span>{{v.name}}</span>
+          <span>{{v.module_name}}</span>
         </div>
       </div>
   </div>

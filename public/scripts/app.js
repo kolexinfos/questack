@@ -11,20 +11,39 @@ questack.config(function($stateProvider, $urlRouterProvider){
   })
 });
 
-questack.controller('DashboardController',function($rootScope,$scope){
-  $rootScope.modules=[
-    {name:'Time Table Manager',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Preptitude',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
-    {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'}
-  ]
+questack.service('ModuleService',function($http){
+    return{
+        getModules:function(){
+            return $http.get('modules/get',{});
+        }
+    }
+});
+
+questack.controller('DashboardController',function($rootScope,$scope,ModuleService){
+    ModuleService.getModules()
+        .success(function(data){
+            $rootScope.modules = data;
+        });
+
+    $rootScope.startModule=function(module_uri)
+    {
+        console.log("Going to: "+module_uri);
+    }
+    /**
+      $rootScope.modules=[
+        {name:'Time Table Manager',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Preptitude',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'},
+        {name:'Admissions',category:'education',description:'Lets you assign slots for teacher based on time and subject like a regular time table'}
+      ]
+     **/
   
   //calculate module positions..
     
