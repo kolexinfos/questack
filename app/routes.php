@@ -109,9 +109,9 @@ Route::get('/misc', function()
     //$questions = DB::table('questions')->find(1);
     //$questions = DB::table('questions')->where('optiona', '=' , 'true')->get();
 
-    //dd($questions);
+    
 
-    //return $questions->category;
+    
 
     //return View::make('index');
 
