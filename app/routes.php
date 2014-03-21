@@ -16,114 +16,19 @@ Route::get('/', function()
 	return View::make('index');
 });
 
-//Route::post('/me', 'HomeController@meController');
+//Auth routes
 Route::post('/auth/login', 'AuthController@login');
 Route::get('/auth/logout', 'AuthController@logout');
 Route::post('/auth/signup', 'AuthController@signup');
+
 
 //module routes
 Route::get('/modules/get','ModuleController@getModules');
 Route::get('/modules/getById','ModuleController@getModuleById');
 
-Route::get('/exams', function()
-{
-    $exams = DB::table('exams')
 
-        ->get();
+//question routes
+Route::get('/question/exams', 'QuestionController@exam' );
+Route::get('/question/courses', 'QuestionController@courses' );
+Route::get('/questions/questionsByYear', 'QuestionController@questionsByYear');
 
-    return Response::json($exams,200);
-
-});
-
-Route::get('/courses', function()
-{
-    $input=Input::all();
-    $rules=array(
-        'examname'=>'required'
-    );
-
-    $v=Validator::make($input,$rules);
-    if($v->fails())
-    {
-        return Response::json(
-            array(
-                'error'=>'Incomplete form data',
-                'message'=>$v->messages()->first('examname')
-            ),400);
-    }
-
-    $examname = Input::get('examname');
-
-    $courses = DB::table('courses')
-        ->where('examname', '=' , $examname)
-        ->get();
-
-    return Response::json($courses,200);
-
-});
-
-Route::get('/questionsByYear', function()
-{
-    $input=Input::all();
-    $rules=array(
-        'examname'=>'required',
-        'coursename' =>'required',
-        'year' => 'required'
-    );
-
-    $v=Validator::make($input,$rules);
-    if($v->fails())
-    {
-        return Response::json(
-            array(
-                'error'=>'Incomplete form data',
-                'message'=>$v->messages()->first('examname')
-            ),400);
-    }
-
-    $examname = Input::get('examname');
-    $coursename = Input::get('coursename');
-    $year = Input::get('year');
-
-    $questions = DB::table('questions')
-        ->where('exam', '=' , $examname)
-        ->where('category', '=',$coursename)
-        ->where('year', '=',$year)
-        ->get();
-
-    return Response::json($questions,200);
-
-});
-
-Route::get('/misc', function()
-{
-    //return 'Users!';
-    //$questions = DB::table('questions')->distinct('category')->get();
-
-    //$name = Input::get('name');
-
-    //$name = 'kolexinfos';
-    //return View::make('hello')->with('name', $name);
-
-    //$questions = DB::table('questions')->get();
-    //$questions = DB::table('questions')->find(1);
-    //$questions = DB::table('questions')->where('optiona', '=' , 'true')->get();
-
-    
-
-    
-
-    //return View::make('index');
-
-
-
-
-    // $questions = DB::table('questions')
-    // ->where('category', '=' , 'mathematics')
-    //->where('year', '=','2008')
-    //->take(5)
-    // ->get();
-
-
-    // return $questions;
-});
