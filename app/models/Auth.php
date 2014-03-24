@@ -1,12 +1,12 @@
 <?php
 
-class Userlog extends Eloquent {
+class Auth extends Eloquent {
 
-	protected $table = 'userlogs';
+	protected $table = 'auth';
 
-	public static $primaryKey = 'userlogid';
+	public static $primaryKey = 'session_id';
 
-	protected $guarded = array('userlogid');
+	protected $guarded = array('session_id');
 
-	protected $softDelete = true;
+	
 }
