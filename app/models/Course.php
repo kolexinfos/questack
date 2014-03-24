@@ -1,8 +1,8 @@
 <?php
 
-class Userlog extends Eloquent {
+class Course extends Eloquent {
 
-	protected $table = 'userlogs';
+	protected $table = 'courses';
 
 	public static $primaryKey = 'userlogid';
 
