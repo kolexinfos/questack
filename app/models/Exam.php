@@ -4,7 +4,7 @@ class Exam extends Eloquent {
 
 	protected $table = 'exams';
 
-	public static $primaryKey = 'examid';
+	public  $primaryKey = 'examid';
 
 	protected $guarded = array('examid');
 

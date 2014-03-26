@@ -4,7 +4,7 @@ class Userlogfield extends Eloquent {
 
 	protected $table = 'Userlogfields';
 
-	public static $primaryKey = 'userlogfieldid';
+	public $primaryKey = 'userlogfieldid';
 
 	protected $guarded = array('userlogfieldid');
 

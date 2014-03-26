@@ -18,6 +18,11 @@ class AuthController extends BaseController {
   {
     if(Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
     {
+        $newLog = new Userlog();
+        $newLog->UserActionsId = 1;
+        $newLog->UserId = Auth::user()->user_id;
+        $newLog->UserLogDetails = "Login";
+        $newLog->save();
       return Response::json(Auth::user());
     } else {
       return Response::json(array('flash' => 'Invalid username or password'), 500);
@@ -26,8 +31,19 @@ class AuthController extends BaseController {
 
   public function logout()
   {
-    Auth::logout();
+
+   if(Input::get('user_id') != null)
+   {Auth::logout();
+    $newLog = new Userlog();
+    $newLog->UserActionsId = 2;
+    $newLog->UserId = Input::get('user_id');
+    $newLog->UserLogDetails = "Logout";
+    $newLog->save();
     return Response::json(array('flash' => 'Logged Out!'));
+   }
+   else{
+          return Response::json(array('flash' => 'Please user_id missing'), 500);
+   }
   }
 
   public function signup()

@@ -4,7 +4,7 @@ class Userlog extends Eloquent {
 
 	protected $table = 'userlogs';
 
-	public static $primaryKey = 'userlogid';
+	public $primaryKey = 'userlogid';
 
 	protected $guarded = array('userlogid');
 

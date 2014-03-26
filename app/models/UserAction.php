@@ -4,7 +4,7 @@ class UserAction extends Eloquent {
 
 	protected $table = 'useractions';
 
-	public static $primaryKey = 'useractionsid';
+	public $primaryKey = 'useractionsid';
 
 	protected $guarded = array('useractionsid');
 
