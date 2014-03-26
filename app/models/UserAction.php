@@ -9,4 +9,6 @@ class UserAction extends Eloquent {
 	protected $guarded = array('useractionsid');
 
 	protected $softDelete = true;
+
+
 }

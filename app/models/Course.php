@@ -9,4 +9,9 @@ class Course extends Eloquent {
 	protected $guarded = array('courseid');
 
 	protected $softDelete = true;
+
+    public function exam()
+    {
+        return $this->hasOne('Exam','ExamId','ExamId');
+    }
 }

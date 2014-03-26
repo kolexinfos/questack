@@ -9,4 +9,11 @@ class Question extends Eloquent {
 	protected $guarded = array('id');
 
 	protected $softDelete = true;
+
+    public function exam()
+    {
+        return $this->hasOne('Exam','ExamCode','Exam');
+    }
+
+
 }

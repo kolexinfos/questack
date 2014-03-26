@@ -32,3 +32,7 @@ Route::get('/question/exams', 'QuestionController@exam' );
 Route::get('/question/courses', 'QuestionController@courses' );
 Route::get('/questions/questionsByYear', 'QuestionController@questionsByYear');
 
+//Stats Routes
+Route::post('/stat/questionComplete', 'LogController@QuestionCompleted');
+Route::post('/stat/testComplete', 'LogController@TestCompleted');
+

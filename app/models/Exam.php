@@ -9,5 +9,11 @@ class Exam extends Eloquent {
 	protected $guarded = array('examid');
 
 	protected $softDelete = true;
-	
+
+    public function courses()
+    {
+        return $this->hasMany('Course','ExamId','ExamId');
+    }
+
+
 }

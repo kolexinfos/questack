@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2014 at 01:22 PM
+-- Generation Time: Mar 26, 2014 at 02:40 PM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.4.22
 
@@ -143,6 +143,14 @@ CREATE TABLE IF NOT EXISTS `licenses` (
   PRIMARY KEY (`license_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `licenses`
+--
+
+INSERT INTO `licenses` (`license_id`, `license_name`, `start_date`, `exp_date`) VALUES
+(1, 'Basic', '', NULL),
+(2, 'Premium', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -158,6 +166,14 @@ CREATE TABLE IF NOT EXISTS `modules` (
   PRIMARY KEY (`module_id`),
   KEY `fk_module_license1_idx` (`license_license_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `modules`
+--
+
+INSERT INTO `modules` (`module_id`, `module_name`, `description`, `version`, `license_license_id`) VALUES
+(1, 'Education', 'Education', '0.0.1', 1),
+(2, 'Health', 'Health', '0.0.1', 2);
 
 -- --------------------------------------------------------
 
@@ -4725,14 +4741,17 @@ CREATE TABLE IF NOT EXISTS `userlogs` (
   PRIMARY KEY (`UserLogId`),
   KEY `UserActionId_idx` (`UserActionsId`),
   KEY `UserId_idx` (`UserId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `userlogs`
 --
 
 INSERT INTO `userlogs` (`UserLogId`, `UserActionsId`, `UserId`, `UserLogDetails`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 0, 'login', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 1, 0, 'login', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, 1, 1, 'Login', '2014-03-26 12:09:57', '2014-03-26 12:09:57', '0000-00-00 00:00:00'),
+(9, 1, 1, 'Login', '2014-03-26 12:18:52', '2014-03-26 12:18:52', '0000-00-00 00:00:00'),
+(10, 2, 1, 'Logout', '2014-03-26 12:20:24', '2014-03-26 12:20:24', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -4759,7 +4778,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`user_id`, `password`, `email`, `role_id`, `firstname`, `lastname`, `company_id`, `created_at`, `updated_at`) VALUES
-(0, '$2y$10$wfcneyxL4dLSMYloaiRsmuG9nwk.uTqZE5SgR7ZjSgyxymXmEnnVK', 'kolexinfos@gmail.com', '1', 'kolade', 'kehinde', 1, '2014-03-11 12:03:59', '2014-03-11 12:03:59');
+(1, '$2y$10$wfcneyxL4dLSMYloaiRsmuG9nwk.uTqZE5SgR7ZjSgyxymXmEnnVK', 'kolexinfos@gmail.com', '1', 'kolade', 'kehinde', 1, '2014-03-11 12:03:59', '2014-03-11 12:03:59');
 
 --
 -- Constraints for dumped tables

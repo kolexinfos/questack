@@ -64,5 +64,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return implode($pass);
     }
 
+    public function userlogs()
+    {
+        return $this->hasMany('Userlog','UserId','user_id');
+    }
+
+    public function role()
+    {
+        return $this->hasOne('Role','role_id','role_id');
+    }
+
 
 }
