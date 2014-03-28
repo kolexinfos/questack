@@ -28,8 +28,6 @@ class LogController extends BaseController {
 
     }
 
-    public function getSuccess(){
-
-    }
+    public function getSuccess(){ }
 
 }
