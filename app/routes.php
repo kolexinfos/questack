@@ -33,8 +33,9 @@ Route::get('/question/courses', 'QuestionController@courses' );
 Route::get('/questions/questionsByYear', 'QuestionController@questionsByYear');
 
 //Log Routes
-Route::post('/log/questionComplete', 'LogController@QuestionCompleted');
-Route::post('/log/testComplete', 'LogController@TestCompleted');
+Route::post('/log/questionCompleted', 'LogController@QuestionCompleted');
+Route::post('/log/testCompleted', 'LogController@TestCompleted');
+Route::post('/log/viewedNote', 'LogController@ViewedNote');
 
 //Stat Routes
 Route::get('/stat/getCompletedQuestions', 'StatController@getCompletedQuestions');

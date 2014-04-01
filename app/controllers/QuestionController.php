@@ -15,7 +15,7 @@ class QuestionController extends BaseController {
     
     $input=Input::all();
     $rules=array(
-        'examname'=>'required'
+        'examid'=>'required'
     );
 
     $v=Validator::make($input,$rules);
@@ -24,21 +24,21 @@ class QuestionController extends BaseController {
         return Response::json(
             array(
                 'error'=>'Incomplete form data',
-                'message'=>$v->messages()->first('examname')
+                'message'=>$v->messages()->first('examid')
             ),400);
     }
 
-    $examname = Input::get('examname');
+    $examid = Input::get('examid');
 
     $courses = DB::table('courses')
-        ->where('examname', '=' , $examname)
+        ->where('examid', '=' , $examid)
         ->get();
 
     return Response::json($courses,200);
 
   }
 
-  public function questionByYear(){
+  public function questionsByYear(){
     
     $input=Input::all();
     $rules=array(

@@ -12,8 +12,7 @@ class LogController extends BaseController {
             'QuestionId'=>'required',
             'Year'=>'required',
             'Status'=>'required',
-            'Number'=>'required',
-            'Answer'=>'required',
+            'Answer'=>'required'
         );
 
         $v=Validator::make($input,$rules);
@@ -32,7 +31,7 @@ class LogController extends BaseController {
         $newLog->UserLogDetails = "QuestionCompleted";
         $newLog->save();
 
-        $LogId = $newLog->UserLogId;
+        $LogId = $newLog->userlogid;
 
         foreach ($input as $k => $v) {
 
@@ -77,7 +76,7 @@ class LogController extends BaseController {
         $newLog->UserLogDetails = "TestCompleted";
         $newLog->save();
 
-        $LogId = $newLog->UserLogId;
+        $LogId = $newLog->userlogid;
 
         foreach ($input as $k => $v) {
 
@@ -101,8 +100,7 @@ class LogController extends BaseController {
             'QuestionId'=>'required',
             'Year'=>'required',
             'Status'=>'required',
-            'Number'=>'required',
-            'Answer'=>'required',
+            'Answer'=>'required'
         );
 
         $v=Validator::make($input,$rules);
@@ -121,7 +119,7 @@ class LogController extends BaseController {
         $newLog->UserLogDetails = "ViewedNote";
         $newLog->save();
 
-        $LogId = $newLog->UserLogId;
+        $LogId = $newLog->userlogid;
 
         foreach ($input as $k => $v) {
 

@@ -6,7 +6,6 @@ class LogController extends BaseController {
       $input=Input::all();
 
       $rules=array(
-
           'Userid'=>'required'
       );
 
@@ -22,7 +21,7 @@ class LogController extends BaseController {
 
 
 
-           }
+     }
 
     public function getCompletedTests() {
 
